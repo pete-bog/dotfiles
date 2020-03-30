@@ -1,0 +1,57 @@
+export TERM=xterm-256color
+
+# Aliases
+alias gs="git status"
+alias gc="git commit -m"
+alias ga="git add"
+alias gco="git checkout"
+alias g="git"
+
+alias grep="grep --color=auto"
+
+alias docker="sudo docker"
+
+# prompt
+color_green="$(tput setaf 2)"
+color_blue="$(tput setaf 4)"
+color_purple="$(tput setaf 5)"
+color_reset="$(tput sgr0)"
+update_prompt() {
+    current_branch=$(/usr/bin/git rev-parse --abbrev-ref HEAD 2> /dev/null)
+    if [[ $? -eq 0 ]]; then
+        prompt_git="$color_purple$current_branch"
+    else
+        prompt_git=""
+    fi
+    PS1="$color_green\u@\h $color_blue\w $prompt_git$color_reset\n$ "
+}
+PROMPT_COMMAND="update_prompt"
+
+# OS specific
+if [ "$(uname)" == "Darwin" ]; then
+    # mac os specifics here
+    alias ls="ls -G"
+    alias ll="ls -lG"
+    alias l="ls -lGA"
+elif [ "$(uname)" == "Linux" ]; then
+    # linux specifics here
+    alias ls="ls --color=auto"
+    alias ll="ls -l --color=auto"
+    alias l="ls -lA --color=auto"
+
+   
+    # distro specific
+    distro=$(cat /etc/os-release | grep ^NAME=)
+    distro=${distro:5}
+    distro=$(echo $distro | sed 's/"//g')
+    if [ "$distro" == "Ubuntu" ]; then 
+        alias install="sudo apt install"
+        alias uninstall="sudo apt remove"
+        alias search="sudo apt search"
+        alias update="sudo apt update && sudo apt upgrade -y"
+    fi
+fi
+
+# Path modifications
+export PATH=~/development/environment/scripts/:$PATH
+export PATH=~/.local/bin:$PATH

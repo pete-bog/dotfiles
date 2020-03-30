@@ -1,0 +1,5 @@
+[user]
+	name = Peter W
+[core]
+	editor = vim
+	excludesFile = ~/.gitignore
