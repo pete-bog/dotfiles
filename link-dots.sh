@@ -1,7 +1,13 @@
-tolink=(".vimrc .tmux.conf .bash_custom .gitconfig .gitignore")
+tolink=(".vimrc .tmux.conf .bash_custom .gitignore")
 for f in $tolink; do
     ln -sf "$PWD/$f" "$HOME/$f"
-    echo "linked $f to $HOME/$f"
+    echo "Linked $f to $HOME/$f"
+done
+
+tocopy=(".gitconfig")
+for f in $tocopy; do
+    ln -sf "$PWD/$f" "$HOME/$f"
+    echo "Copied $f to $HOME/$f"
 done
 
 echo ". ~/.bash_custom" >> ~/.bashrc
