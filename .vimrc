@@ -47,6 +47,14 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal! g'\"" | endif
 endif
+set guicursor=
+set spelllang=en
+set nohlsearch
+set backspace=indent,eol,start
+
+" nvim specifics
+"if has("nvim")
+"endif
 
 " intendation
 set expandtab		    "expands tabs to spaces
@@ -59,10 +67,6 @@ set autoindent
 set number
 set ruler
 
-set spelllang=en
-set nohlsearch
-set backspace=indent,eol,start
-set guicursor=i:ver100-iCursor
 " line at 88 chars
 set colorcolumn=88
 "Set highlight colors
@@ -153,7 +157,3 @@ nnoremap <silent> <leader>p :ALEPreviousWrap<CR>
 let g:ale_linters={'python':['flake8']}
 let g:ale_python_flake8_options = "--max-line-length 88"
 let g:ale_fixers={'python':['isort']}
-"let g:ale_lint_on_save = 1
-"let g:ale_lint_on_text_changed = 0
-"let g:ale_lint_on_enter = 1
-

@@ -11,6 +11,11 @@ alias grep="grep --color=auto"
 
 alias docker="sudo docker"
 
+# if nvim is installed, use that instead of vim
+if [[ -f ~/.local/bin/nvim ]]; then
+    alias vim="nvim"
+fi
+
 # prompt
 color_green="$(tput setaf 2)"
 color_blue="$(tput setaf 4)"
