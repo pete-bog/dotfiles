@@ -88,7 +88,7 @@ colorscheme palenight
 " CLIPBOARD
 " copy to system clipboard
 nnoremap <leader>y "+y
-" paste to system clipboard
+" paste from system clipboard
 nnoremap <leader>p "+p
 
 " SHORTCUTS
