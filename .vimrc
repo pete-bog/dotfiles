@@ -86,10 +86,10 @@ colorscheme palenight
 "colorscheme Tomorrow-Night
 
 " CLIPBOARD
-" copy to system clipboard
-nnoremap <leader>y "+y
-" paste from system clipboard
-nnoremap <leader>p "+p
+" copy highlighted selection 
+vmap <C-c> "zy:execute "!echo ".getreg('z')." \| xclip -i -selection clipboard"<CR><CR>
+"vnoremap <leader>y :w !xclip -i -selection clipboard<CR><CR> "only does complete lines
+"noremap <C-p> :r !xclip -o -selection -c<CR><CR> "paste
 
 " SHORTCUTS
 " remap switching panes to ctrl+directions
@@ -97,14 +97,9 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-" remap next tab and previous buffer
+" next/previous buffer
 map <leader>[ :bp<CR>
 map <leader>] :bn<CR>
-" save and quit shorcuts
-nnoremap <leader>q :q<CR>
-nnoremap <leader>w :w<CR>
-nnoremap <leader>x :x<CR>
-nnoremap <leader>wq :x<CR>
 
 "COMMANDS
 function! <SID>StripTrailingWhitespaces()
@@ -153,7 +148,7 @@ highlight TagbarHighlight ctermfg=Black ctermbg=Blue
 
 " ale
 nnoremap <silent> <leader>e :ALENextWrap<CR>
-nnoremap <silent> <leader>p :ALEPreviousWrap<CR>
+nnoremap <silent> <leader>E :ALEPreviousWrap<CR>
 let g:ale_linters={'python':['flake8']}
 let g:ale_python_flake8_options = "--max-line-length 88"
 let g:ale_fixers={'python':['isort']}

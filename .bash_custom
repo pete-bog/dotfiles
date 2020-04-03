@@ -12,9 +12,9 @@ alias grep="grep --color=auto"
 alias docker="sudo docker"
 
 # if nvim is installed, use that instead of vim
-if [[ -f ~/.local/bin/nvim ]]; then
-    alias vim="nvim"
-fi
+#if [[ -f ~/.local/bin/nvim ]]; then
+    #alias vim="nvim"
+#fi
 
 # prompt
 color_green="$(tput setaf 2)"
@@ -44,6 +44,9 @@ elif [ "$(uname)" == "Linux" ]; then
     alias ll="ls -l --color=auto"
     alias l="ls -lA --color=auto"
 
+    # copy and paste aliases
+    alias copy="xclip -i -selection clipboard"
+    alias paste="xclip -o -selection clipboard"
    
     # distro specific
     distro=$(cat /etc/os-release | grep ^NAME=)
