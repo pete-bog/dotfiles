@@ -9,6 +9,9 @@ CursorShape=0
 Name=OneDarkDark
 Parent=FALLBACK/
 
+[Keyboard]
+KeyBindings=default
+
 [Scrolling]
 ScrollBarPosition=2
 

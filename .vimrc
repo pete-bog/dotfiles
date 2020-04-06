@@ -39,6 +39,7 @@ Plug 'scrooloose/nerdcommenter'
 call plug#end()
 
 " GENERAL
+set term=xterm
 let mapleader=","
 imap jj <Esc>
 set mouse=a
@@ -151,4 +152,5 @@ nnoremap <silent> <leader>e :ALENextWrap<CR>
 nnoremap <silent> <leader>E :ALEPreviousWrap<CR>
 let g:ale_linters={'python':['flake8']}
 let g:ale_python_flake8_options = "--max-line-length 88"
-let g:ale_fixers={'python':['isort']}
+let g:ale_fixers={'python':['isort', 'yapf']}
+let g:ale_python_yapf_options = "--style google"
