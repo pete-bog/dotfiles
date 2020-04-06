@@ -86,11 +86,9 @@ set background=dark
 colorscheme palenight
 "colorscheme Tomorrow-Night
 
-" CLIPBOARD
-" copy highlighted selection 
-vmap <C-c> "zy:execute "!echo ".getreg('z')." \| xclip -i -selection clipboard"<CR><CR>
-"vnoremap <leader>y :w !xclip -i -selection clipboard<CR><CR> "only does complete lines
-"noremap <C-p> :r !xclip -o -selection -c<CR><CR> "paste
+" CLIPBOARD - this doesn't require +clipboard and uses xclip instead
+" copy highlighted selection only does complete lines
+vnoremap <leader>y :w !xclip -i -selection clipboard<CR><CR>
 
 " SHORTCUTS
 " remap switching panes to ctrl+directions
