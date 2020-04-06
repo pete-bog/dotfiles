@@ -1,5 +1,5 @@
 #!/bin/bash
-CONFIG=~/.config/xfce4/terminal/terminalrc
+CONFIG=~/.config/alacritty/alacritty.yml
 mkdir -p $(dirname $CONFIG)
 rm -f $CONFIG
 ln -v -s $PWD/$(basename $CONFIG) $CONFIG

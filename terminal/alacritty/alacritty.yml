@@ -1,0 +1,54 @@
+font:
+    size: 11.5
+    normal:
+        family: Meslo LG S
+        style: Regular
+
+    bold:
+        family: Meslo LG S
+        style: Bold
+
+    italic:
+        family: Meslo LG S
+        style: Italic
+
+    bold_italic:
+        family: Meslo LG S
+        style: Bold Italic
+
+
+key_bindings:
+  - { key: N,   mods: Control|Shift, action: SpawnNewInstance }
+
+colors:
+    # Default colors
+    primary:
+        background: "#000000"
+        foreground: "#bfc7d5"
+        bright_foreground: "#c8ccd4"
+
+    cursor:
+        text: "#212121"
+        cursor: "#bfc7d5"
+
+    # Normal colors
+    normal:
+        black: "#292d3e"
+        red: "#ff5370"
+        green: "#aee68d"
+        yellow: "#ffcb6b"
+        blue: "#72adda"
+        magenta: "#c792ea"
+        cyan: "#78d7da"
+        white: "#bfc7d5"
+
+    # Bright colors
+    bright:
+        black: "#292d3e"
+        red: "#ff5370"
+        green: "#aee68d"
+        yellow: "#ffcb6b"
+        blue: "#72adda"
+        magenta: "#c792ea"
+        cyan: "#78d7da"
+        white: "#c8ccd4"
