@@ -146,8 +146,9 @@ let g:tagbar_sort = 0
 highlight TagbarHighlight ctermfg=Black ctermbg=Blue
 
 " ale
-nnoremap <silent> <leader>e :ALENextWrap<CR>
-nnoremap <silent> <leader>E :ALEPreviousWrap<CR>
+nnoremap <silent><leader>e :ALENextWrap<CR>
+nnoremap <silent><leader>E :ALEPreviousWrap<CR>
+nnoremap <silent><leader>f :ALEFix<CR>
 let g:ale_linters={'python':['flake8']}
 let g:ale_python_flake8_options = "--max-line-length 88"
 let g:ale_fixers={'python':['isort', 'yapf']}
