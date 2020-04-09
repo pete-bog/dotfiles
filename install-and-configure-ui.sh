@@ -11,6 +11,8 @@ CENTOS=""
 
 if [[ "$distro" == "Ubuntu" ]]; then
     sudo apt install -y $GENERIC $UBUNTU
+    # set default session to gnome
+    sed -i "s/XSession=ubuntu/XSession=gnome" /var/lib/AccountsService/users/$(whoami)
 elif [[ "$distro" == "debian" ]]; then
     apt install -y $GENERIC $DEBIAN
 elif [[ "$distro" == "centos" ]]; then
