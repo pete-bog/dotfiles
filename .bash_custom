@@ -1,10 +1,13 @@
- #export TERM=xterm-256color # should be set by terminal emulator
-
 # Aliases
 alias gs="git status"
 alias gc="git commit -m"
 alias ga="git add"
+alias gaa="git add -A && git status"
+alias gac="git add -A && git status && git commit -m"
 alias gco="git checkout"
+alias gr="git reset"
+alias gp="git push"
+alias gl="git pull"
 alias g="git"
 
 alias grep="grep --color=auto"
