@@ -12,8 +12,6 @@ alias g="git"
 
 alias grep="grep --color=auto"
 
-alias docker="sudo docker"
-
 # if nvim is installed, use that instead of vim
 #if [[ -f ~/.local/bin/nvim ]]; then
     #alias vim="nvim"
