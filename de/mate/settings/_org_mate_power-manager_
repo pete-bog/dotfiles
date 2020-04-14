@@ -1,0 +1,5 @@
+[/]
+button-lid-ac='suspend'
+button-suspend='suspend'
+button-power='interactive'
+sleep-display-ac=0

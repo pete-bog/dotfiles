@@ -1,0 +1,5 @@
+[/]
+idle-activation-enabled=false
+themes=['screensavers-footlogo-floaters']
+mode='single'
+lock-enabled=false
