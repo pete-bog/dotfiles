@@ -4,15 +4,24 @@ distro=${distro:5}
 distro=$(echo $distro | sed 's/"//g')
 
 # alternative to materia is arc-theme
-GENERIC="materia-gtk-theme papirus-icon-theme"
-UBUNTU="ubuntu-gnome-desktop"
+GENERIC="xfce4-terminal"
+UBUNTU="arc-theme materia-gtk-theme papirus-icon-theme"
 DEBIAN=""
 CENTOS=""
 
 if [[ "$distro" == "Ubuntu" ]]; then
+    read -p "Install mate or gnome?" choice
+    if [[ $choice == "mate" ]]; then
+        sudo apt install -y ubuntu-mate-desktop
+    elif [[ $choice == "gnome" ]]; then
+        sudo apt install -y ubuntu-gnome-desktop
+    else
+        echo "'$choice' is not 'mate' or 'gnome' exiting."
+        exit 1
+    fi
     sudo apt install -y $GENERIC $UBUNTU
-    # set default session to gnome
-    sed -i "s/XSession=ubuntu/XSession=gnome" /var/lib/AccountsService/users/$(whoami)
+    sed -i "s/^XSession=.*$/XSession=$choice/g" /var/lib/AccountsService/users/$(whoami)
+    echo "Default session set to '$choice'. Please log out and in."
 elif [[ "$distro" == "debian" ]]; then
     apt install -y $GENERIC $DEBIAN
 elif [[ "$distro" == "centos" ]]; then
