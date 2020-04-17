@@ -23,12 +23,9 @@ Plug 'tpope/vim-ragtag', {'for': ['xml', 'html']}
 Plug 'airblade/vim-gitgutter'
 
 " tags
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 
 " python
-"Plug 'vim-python/python-syntax', {'for': 'python'} "replaced by polyglot
-"Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'} "replaced by polyglot
 Plug 'vim-scripts/indentpython.vim', {'for': 'python'} "replaced by polyglot
 Plug 'w0rp/ale', {'for': 'python'}
 
@@ -127,7 +124,7 @@ vmap <C-_> <leader>c<Space>
 " disable slow pep8 indent python script (use indentpython instead)
 let g:polyglot_disabled = ["python-indent"]
 
-" python syntax settings
+" python syntax settings see https://github.com/vim-python/python-syntax
 let g:python_highlight_all = 1
 let g:python_highlight_class_vars = 0
 let g:python_highlight_builtins = 0
