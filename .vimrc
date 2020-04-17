@@ -11,8 +11,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'christoomey/vim-tmux-navigator'
 
 " theme
-Plug 'chriskempson/vim-tomorrow-theme'
-Plug 'rakr/vim-one'
+"Plug 'chriskempson/vim-tomorrow-theme'
+"Plug 'rakr/vim-one'
 Plug 'drewtempelmeyer/palenight.vim'
 
 " XML
@@ -21,19 +21,20 @@ Plug 'tpope/vim-ragtag', {'for': ['xml', 'html']}
 
 "git
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
 
 " tags
-Plug 'xolox/vim-misc', {'for': 'python'}
-Plug 'xolox/vim-easytags', {'for': 'python'}
-Plug 'majutsushi/tagbar', {'for': 'python'}
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'majutsushi/tagbar'
 
 " python
-Plug 'vim-python/python-syntax', {'for': 'python'}
+"Plug 'vim-python/python-syntax', {'for': 'python'} "replaced by polyglot
+"Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'} "replaced by polyglot
+Plug 'vim-scripts/indentpython.vim', {'for': 'python'} "replaced by polyglot
 Plug 'w0rp/ale', {'for': 'python'}
-Plug 'Vimjas/vim-python-pep8-indent', {'for': 'python'}
+
 
 " misc
+Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdcommenter'
 
 call plug#end()
@@ -52,10 +53,6 @@ set guicursor=
 set spelllang=en
 set nohlsearch
 set backspace=indent,eol,start
-
-" nvim specifics
-"if has("nvim")
-"endif
 
 " intendation
 set expandtab		    "expands tabs to spaces
@@ -127,14 +124,19 @@ let g:NERDTreeQuitOnOpen = 1
 nmap <C-_> <leader>c<Space>
 vmap <C-_> <leader>c<Space>
 
+" disable slow pep8 indent python script (use indentpython instead)
+let g:polyglot_disabled = ["python-indent"]
+
+" python syntax settings
+let g:python_highlight_all = 1
+let g:python_highlight_class_vars = 0
+let g:python_highlight_builtins = 0
+
 " airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme="palenight"
 set laststatus=2
 set ttimeoutlen=10
-
-" easy tags suppress notice messages
-let g:easytags_suppress_report = 1
 
 " tagbar settings
 nnoremap <silent><leader>t :TagbarToggle<CR>
