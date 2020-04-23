@@ -1,3 +1,11 @@
+# set edittor to vi or vim
+VIM_INSTALL="$(which vim)"
+if [[ -z "$VIM_INSTALL" ]]; then
+    VIM_INSTALL="$(which vi)"
+fi
+export EDITOR=$VIM_INSTALL
+export VISUAL=$VIM_INSTALL
+
 # Aliases
 alias gs="git status"
 alias gc="git commit -m"
@@ -11,11 +19,6 @@ alias gl="git pull"
 alias g="git"
 
 alias grep="grep --color=auto"
-
-# if nvim is installed, use that instead of vim
-#if [[ -f ~/.local/bin/nvim ]]; then
-    #alias vim="nvim"
-#fi
 
 # prompt
 color_green="$(tput setaf 2)"
@@ -67,7 +70,7 @@ elif [ "$(uname)" == "Linux" ]; then
     if [ "$distro" == "Ubuntu" ]; then 
         alias install="sudo apt install"
         alias uninstall="sudo apt remove"
-        alias search="sudo apt search"
+        alias search="apt search"
         alias update="sudo apt update && sudo apt upgrade -y"
     fi
 fi
