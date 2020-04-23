@@ -1,6 +1,4 @@
 #!/bin/bash
-for file in $(ls settings); do
-    setting=$(echo $file | sed 's|_|/|g')
-    echo "Loading $file to $setting"
-    dconf load $setting < settings/$file
-done
+echo "Loading from gnome-dconf-settings"
+dconf load / < gnome-dconf-settings
+echo Done

@@ -1,3 +1,0 @@
-[/]
-sources=[('xkb', 'us')]
-xkb-options=@as []

@@ -1,0 +1,31 @@
+
+[org/gnome/desktop/wm/keybindings]
+switch-applications=@as []
+switch-applications-backward=@as []
+switch-windows=['<Alt>Tab']
+switch-windows-backward=['<Shift><Alt>Tab']
+
+[org/gnome/desktop/wm/preferences]
+button-layout='appmenu:minimize,close'
+
+[org/gnome/desktop/interface]
+clock-show-weekday=true
+enable-hot-corners=false
+gtk-im-module='gtk-im-context-simple'
+gtk-theme='Materia-dark-compact'
+icon-theme='Papirus'
+show-battery-percentage=true
+toolkit-accessibility=false
+
+[org/gnome/desktop/input-sources]
+sources=[('xkb', 'us')]
+xkb-options=@as []
+
+[org/gnome/nautilus/preferences]
+default-folder-viewer='list-view'
+search-filter-time-type='last_modified'
+
+[org/gnome/shell]
+app-picker-view=uint32 1
+favorite-apps=['firefox.desktop', 'org.gnome.Nautilus.desktop', 'xfce4-terminal.desktop']
+

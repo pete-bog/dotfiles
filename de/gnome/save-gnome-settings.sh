@@ -1,14 +1,16 @@
 #!/bin/bash
 
-out_dir="settings"
-mkdir -p $out_dir
-to_save="/org/gnome/desktop/wm/ /org/gnome/desktop/interface/ /org/gnome/desktop/input-sources/ /org/gnome/nautilus/preferences/ /org/gnome/shell/"
+dump_to=gnome-dconf-settings
+to_save="/org/gnome/desktop/wm/keybindings/ /org/gnome/desktop/wm/preferences/ /org/gnome/desktop/interface/ /org/gnome/desktop/input-sources/ /org/gnome/nautilus/preferences/ /org/gnome/shell/"
+
+echo "" > $dump_to
 
 for setting in $to_save; do
-    dump_to="$out_dir/$(echo $setting | sed 's|/|_|g')"
-    dconf dump $setting > $dump_to
-    echo "Saved $setting to $dump_to"
+    echo "Saving $setting to $dump_to"
+    # save the setting, replacing the leading and trailing '/' with square brackets
+    echo "$(echo $setting | sed 's|^/|\[|g' | sed 's|/$|\]|g')" >> $dump_to
+    dconf dump $setting | tail -n +2 >> $dump_to
+    echo "" >> $dump_to
 done
-unset out_dir
 unset to_save
 unset dump_to

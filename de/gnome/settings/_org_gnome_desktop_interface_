@@ -1,7 +1,0 @@
-[/]
-clock-show-weekday=true
-enable-hot-corners=false
-gtk-im-module='gtk-im-context-simple'
-gtk-theme='Materia-dark-compact'
-icon-theme='Papirus'
-show-battery-percentage=true
