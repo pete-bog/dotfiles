@@ -1,4 +1,5 @@
-[general]
+
+[org/mate/panel]
 object-id-list=['briskmenu', 'firefox', 'notification-area', 'clock', 'object-0', 'object-1', 'object-3', 'object-2']
 toplevel-id-list=['top']
 
@@ -77,3 +78,56 @@ toplevel-id='top'
 position=2186
 object-type='applet'
 panel-right-stick=false
+
+[org/mate/desktop/interface]
+gtk-color-scheme='menu_bg: #383c4a'
+icon-theme='Papirus'
+gtk-theme='Arc-Dark'
+
+[org/mate/screensaver]
+idle-activation-enabled=false
+themes=['screensavers-footlogo-floaters']
+mode='single'
+lock-enabled=false
+
+[org/mate/power-manager]
+button-lid-ac='suspend'
+button-suspend='suspend'
+button-power='interactive'
+sleep-display-ac=0
+
+[org/mate/marco]
+theme='Arc-Dark'
+
+[global-keybindings]
+switch-to-workspace-right='<Primary><Mod4>Right'
+run-command-terminal='<Primary><Mod4>Right'
+switch-to-workspace-left='<Primary><Mod4>Left'
+switch-panels='disabled'
+switch-to-workspace-down='<Primary><Mod4>Down'
+switch-to-workspace-up='<Primary><Mod4>Up'
+
+[window-keybindings]
+activate-window-menu='disabled'
+
+[org/mate/caja]
+start-with-sidebar=true
+geometry='800x550+450+142'
+start-with-status-bar=true
+maximized=false
+start-with-toolbar=true
+
+[org/mate/terminal]
+foreground-color='#FFFFFFFFFFFF'
+visible-name='Default'
+palette='#000000000000:#CCCC00000000:#4E4D9A9A0605:#C4C3A0A00000:#34346564A4A3:#7575504F7B7B:#060598979A9A:#D3D3D7D6CFCF:#555457565352:#EFEF29282928:#8A89E2E23434:#FCFBE9E84F4F:#72729F9ECFCF:#ADAC7F7EA8A8:#3434E2E2E2E2:#EEEDEEEDECEB'
+use-system-font=false
+use-theme-colors=false
+scrollbar-position='hidden'
+default-show-menubar=false
+font='Meslo LG S 11'
+allow-bold=false
+scrollback-unlimited=false
+bold-color='#000000000000'
+background-color='#000000000000'
+
