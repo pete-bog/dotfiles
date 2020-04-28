@@ -76,9 +76,10 @@ syntax enable
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set background=dark
-"colorscheme one
-colorscheme palenight
-"colorscheme Tomorrow-Night
+" Set colortheme, but don't warn on start up if can't find it
+" silent! colorscheme one
+" silent! colorscheme Tomorrow-Night
+silent! colorscheme palenight
 
 " CLIPBOARD - this doesn't require +clipboard and uses xclip instead
 " copy highlighted selection only does complete lines
