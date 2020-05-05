@@ -26,13 +26,14 @@ Plug 'airblade/vim-gitgutter'
 Plug 'majutsushi/tagbar'
 
 " python
-Plug 'vim-scripts/indentpython.vim', {'for': 'python'} "replaced by polyglot
+" The indent that comes with polyglot is slow, so use the faster but older one
+Plug 'vim-scripts/indentpython.vim', {'for': 'python'}
 Plug 'w0rp/ale', {'for': 'python'}
-
 
 " misc
 Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-surround'
 
 call plug#end()
 
@@ -106,7 +107,7 @@ function! <SID>StripTrailingWhitespaces()
 endfun
 command StripTrailing :call <SID>StripTrailingWhitespaces()
 " auto strip py files on save
-autocmd BufWritePre *.py :call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre *.py,*.yml,*.json :call <SID>StripTrailingWhitespaces()
 " break a line and auto indent
 command BreakLine :s/, /,\r/g
 
