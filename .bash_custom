@@ -16,6 +16,7 @@ alias gco="git checkout"
 alias gr="git reset"
 alias gp="git push"
 alias gl="git pull"
+alias gg="git gui"
 alias g="git"
 
 alias grep="grep --color=auto"
