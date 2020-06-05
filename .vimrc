@@ -63,8 +63,8 @@ set autoindent
 set number
 set ruler
 
-" line at 88 chars
-set colorcolumn=88
+" line at 80 chars
+set colorcolumn=80
 "Set highlight colors
 hi MatchParen cterm=none ctermbg=66 ctermfg=251
 "menu
@@ -86,16 +86,6 @@ silent! colorscheme palenight
 " copy highlighted selection only does complete lines
 vnoremap <leader>y :w !xclip -i -selection clipboard<CR><CR>
 
-" SHORTCUTS
-" remap switching panes to ctrl+directions
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-" next/previous buffer
-map <leader>[ :bp<CR>
-map <leader>] :bn<CR>
-
 "COMMANDS
 function! <SID>StripTrailingWhitespaces()
     let _s=@/
@@ -111,8 +101,24 @@ autocmd BufWritePre *.py,*.yml,*.json :call <SID>StripTrailingWhitespaces()
 " break a line and auto indent
 command BreakLine :s/, /,\r/g
 
+" SHORTCUTS
+" remap switching panes to ctrl+directions
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+" next/previous buffer
+map <leader>[ :bp<CR>
+map <leader>] :bn<CR>
+map <F3> :bp<CR>
+map <F4> :bn<CR>
+
+" MACROS
+" insert python pudb breakpoint
+let @b='Iimport pudb; pu.dbjj'
+
 "PLUGINS
-"ctrlp
+"ctrlp ctrl-t for symbol search
 nnoremap <C-t> :CtrlPBufTag<CR>
 
 "nerdtree
