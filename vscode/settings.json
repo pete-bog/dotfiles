@@ -1,0 +1,66 @@
+{
+    "autoDocstring.docstringFormat": "google",
+    "editor.autoClosingBrackets": "never",
+    "editor.autoClosingQuotes": "never",
+    "editor.find.autoFindInSelection": "multiline",
+    "editor.fontFamily": "'Meslo LG S', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontSize": 15,
+    "editor.formatOnSave": true,
+    "editor.minimap.renderCharacters": false,
+    "editor.minimap.size": "fill",
+    "editor.rulers": [
+        80
+    ],
+    "files.trimTrailingWhitespace": true,
+    "gitProjectManager.baseProjectsFolders": [
+        "/home/user/development/"
+    ],
+    "outline.showConstants": false,
+    "outline.showEnumMembers": false,
+    "outline.showModules": false,
+    "outline.showVariables": false,
+    "python.defaultInterpreterPath": "/usr/bin/python3",
+    "python.formatting.provider": "yapf",
+    "python.formatting.yapfArgs": [
+        "--style=google"
+    ],
+    "python.jediEnabled": false,
+    "python.linting.flake8Args": [
+        "--max-line-length=80"
+    ],
+    "python.linting.pydocstyleArgs": [
+        "--convention=google"
+    ],
+    "python.linting.pydocstyleEnabled": true,
+    "python.linting.pylintArgs": [
+        "--disable=invalid-name",
+        "--disable=too-few-public-methods",
+        "--disable=too-many-public-methods"
+    ],
+    "python.linting.pylintEnabled": true,
+    "python.linting.pylintUseMinimalCheckers": false,
+    "python.sortImports.path": "isort",
+    "python.testing.autoTestDiscoverOnSaveEnabled": true,
+    "python.testing.nosetestPath": "nose2",
+    "python.testing.nosetestsEnabled": true,
+    "python.workspaceSymbols.enabled": true,
+    "terminal.integrated.fontSize": 15,
+    "vim.insertModeKeyBindings": [
+        {
+            "after": [
+                "<Esc>"
+            ],
+            "before": [
+                "j",
+                "j"
+            ]
+        }
+    ],
+    "vim.leader": ",",
+    "vim.useCtrlKeys": false,
+    "vim.useSystemClipboard": true,
+    "workbench.colorTheme": "Ace Palenight",
+    "workbench.editor.highlightModifiedTabs": true,
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.startupEditor": "none"
+}
