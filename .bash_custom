@@ -6,7 +6,8 @@ fi
 export EDITOR=$VIM_INSTALL
 export VISUAL=$VIM_INSTALL
 
-# Aliases
+# ##### Aliases #######
+# Git
 alias gs="git status"
 alias gc="git commit -m"
 alias ga="git add"
@@ -18,13 +19,15 @@ alias gp="git push"
 alias gl="git pull"
 alias gg="git gui"
 alias g="git"
-
-alias grep="grep --color=auto"
+# other
+alias grep="grep --color=always"
+alias less="less -R"
 
 # prompt
 color_green="$(tput setaf 2)"
 color_blue="$(tput setaf 4)"
 color_purple="$(tput setaf 5)"
+color_cyan="$(tput setaf 6)"
 color_reset="$(tput sgr0)"
 update_prompt() {
     current_branch=$(/usr/bin/git rev-parse --abbrev-ref HEAD 2> /dev/null)
@@ -33,7 +36,13 @@ update_prompt() {
     else
         prompt_git=""
     fi
-    PS1="$color_green\u@\h $color_blue\w $prompt_git$color_reset\n$ "
+
+    if [[ -z "$VIRTUAL_ENV" ]]; then
+        prompt_venv=""
+    else
+        prompt_venv="$color_cyan($(basename $VIRTUAL_ENV)) "
+    fi
+    PS1="$prompt_venv$color_green\u@\h $color_blue\w $prompt_git$color_reset\n$ "
 }
 PROMPT_COMMAND="update_prompt"
 
@@ -76,6 +85,14 @@ elif [ "$(uname)" == "Linux" ]; then
         alias update="sudo apt update && sudo apt upgrade -y"
     fi
 fi
+
+# pyenv
+export PYENV_ROOT=~/.pyenv
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# pipenv
+export PIPENV_VENV_IN_PROJECT=1
 
 # Path modifications
 export PATH=~/development/environment/scripts/:$PATH
