@@ -11,8 +11,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'christoomey/vim-tmux-navigator'
 
 " theme
-"Plug 'chriskempson/vim-tomorrow-theme'
-"Plug 'rakr/vim-one'
+Plug 'rakr/vim-one'
 Plug 'drewtempelmeyer/palenight.vim'
 
 " XML
@@ -74,13 +73,14 @@ set wildmode=longest:full,full
 "COLORS
 set termguicolors
 syntax enable
+set background=dark
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-set background=dark
 " Set colortheme, but don't warn on start up if can't find it
-" silent! colorscheme one
-" silent! colorscheme Tomorrow-Night
-silent! colorscheme palenight
+"silent! colorscheme palenight
+"silent! let g:airline_theme="palenight"
+silent! colorscheme one
+silent! let g:airline_theme="one"
 
 " CLIPBOARD - this doesn't require +clipboard and uses xclip instead
 " copy highlighted selection only does complete lines
@@ -139,7 +139,6 @@ let g:python_highlight_builtins = 0
 
 " airline
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme="palenight"
 set laststatus=2
 set ttimeoutlen=10
 
