@@ -139,6 +139,7 @@ let g:python_highlight_builtins = 0
 
 " airline
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_tab_type = 0
 set laststatus=2
 set ttimeoutlen=10
 
