@@ -42,7 +42,7 @@ update_prompt() {
     else
         prompt_venv="$color_cyan($(basename $VIRTUAL_ENV)) "
     fi
-    PS1="$prompt_venv$color_green\u@\h $color_blue\w $prompt_git$color_reset\n$ "
+    PS1="$prompt_venv$color_green\u@\h $color_blue\w $prompt_git$color_reset\n» "
 }
 PROMPT_COMMAND="update_prompt"
 
