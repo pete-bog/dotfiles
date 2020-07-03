@@ -77,12 +77,12 @@ elif [ "$(uname)" == "Linux" ]; then
     # copy and paste aliases
     alias copy="xclip -i -selection clipboard"
     alias paste="xclip -o -selection clipboard"
-   
+
     # distro specific
     distro=$(cat /etc/os-release | grep --color=never "^NAME=")
     distro=${distro:5}
     distro=$(echo $distro | sed 's/"//g')
-    if [ "$distro" == "Ubuntu" ]; then 
+    if [ "$distro" == "Ubuntu" ]; then
         alias pkg="apt show"
         alias pkginstall="sudo apt install"
         alias pkgi="sudo apt install"
@@ -103,6 +103,8 @@ eval "$(pyenv init -)"
 
 # pipenv
 export PIPENV_VENV_IN_PROJECT=1
+# poetry
+export POETRY_VIRTUALENVS_IN_PROJECT=true
 
 # Path modifications
 export PATH=~/development/environment/scripts/:$PATH
