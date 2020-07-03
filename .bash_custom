@@ -22,8 +22,12 @@ alias g="git"
 # other
 alias grep="grep --color=always"
 alias less="less -R"
+# virtualenv
+alias activate="source .venv/bin/activate"
+# tmux
+alias t="tmux"
 
-# prompt
+############# PROMPT ###############
 color_green="$(tput setaf 2)"
 color_blue="$(tput setaf 4)"
 color_purple="$(tput setaf 5)"
@@ -57,7 +61,7 @@ case ${TERM} in
     ;;
 esac
 
-# OS specific
+############## OS specific ##################
 if [ "$(uname)" == "Darwin" ]; then
     # mac os specifics here
     alias ls="ls -G"
@@ -75,17 +79,23 @@ elif [ "$(uname)" == "Linux" ]; then
     alias paste="xclip -o -selection clipboard"
    
     # distro specific
-    distro=$(cat /etc/os-release | grep ^NAME=)
+    distro=$(cat /etc/os-release | grep --color=never "^NAME=")
     distro=${distro:5}
     distro=$(echo $distro | sed 's/"//g')
     if [ "$distro" == "Ubuntu" ]; then 
-        alias install="sudo apt install"
-        alias uninstall="sudo apt remove"
-        alias search="apt search"
-        alias update="sudo apt update && sudo apt upgrade -y"
+        alias pkg="apt show"
+        alias pkginstall="sudo apt install"
+        alias pkgi="sudo apt install"
+        alias pkgremove="sudo apt remove"
+        alias pkgr="sudo apt remove"
+        alias pkgsearch="apt search"
+        alias pkgs="apt search"
+        alias pkgupdate="sudo apt update && sudo apt upgrade -y"
+        alias pkgu="sudo apt update && sudo apt upgrade -y"
     fi
 fi
 
+############## ENVIRONMENT VARIABLES ##############
 # pyenv
 export PYENV_ROOT=~/.pyenv
 export PATH="$PYENV_ROOT/bin:$PATH"
