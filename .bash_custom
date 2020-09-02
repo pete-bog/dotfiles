@@ -44,7 +44,7 @@ update_prompt() {
     if [[ -z "$VIRTUAL_ENV" ]]; then
         prompt_venv=""
     else
-        prompt_venv="$color_cyan($(basename $VIRTUAL_ENV)) "
+        prompt_venv="$color_cyan($(basename $(dirname $VIRTUAL_ENV))) "
     fi
     PS1="$prompt_venv$color_green\u@\h $color_blue\w $prompt_git$color_reset\n» "
 }
