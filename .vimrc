@@ -1,3 +1,6 @@
+" disable slow pep8 indent python script (use indentpython instead)
+let g:polyglot_disabled = ["python-indent"]
+
 call plug#begin('~/.vim/plugged')
 " files
 Plug 'kien/ctrlp.vim'
@@ -128,9 +131,6 @@ let g:NERDTreeQuitOnOpen = 1
 "nerdcommenter
 nmap <C-_> <leader>c<Space>
 vmap <C-_> <leader>c<Space>
-
-" disable slow pep8 indent python script (use indentpython instead)
-let g:polyglot_disabled = ["python-indent"]
 
 " python syntax settings see https://github.com/vim-python/python-syntax
 let g:python_highlight_all = 1
