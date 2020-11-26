@@ -15,7 +15,6 @@ Plug 'christoomey/vim-tmux-navigator'
 
 " theme
 Plug 'rakr/vim-one'
-Plug 'drewtempelmeyer/palenight.vim'
 
 " XML
 Plug 'gregsexton/MatchTag', {'for': ['xml', 'html']}
@@ -80,8 +79,6 @@ set background=dark
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 " Set colortheme, but don't warn on start up if can't find it
-"silent! colorscheme palenight
-"silent! let g:airline_theme="palenight"
 silent! colorscheme one
 silent! let g:airline_theme="one"
 
