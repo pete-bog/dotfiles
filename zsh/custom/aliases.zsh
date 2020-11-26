@@ -11,3 +11,8 @@ alias less="less -R"
 alias activate="source .venv/bin/activate"
 # tmux
 alias t="tmux"
+
+# if nvim is installed, then prefer it over vim
+if [[ ! -z "$(which nvim)" ]]; then
+    alias vim="nvim"
+fi
