@@ -2,7 +2,7 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin/:$PATH"
 export PATH="$HOME/development/environment/tools/bin:$PATH"
-export PATH="$HOME/development/environment/scripts:$PATH"
+export PATH="$HOME/development/environment/scripts/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
 export CLICOLOR=1
