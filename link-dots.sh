@@ -1,14 +1,19 @@
+#!/bin/bash
+set -e
+
+echo "Linking files..."
 tolink=(".vimrc .tmux.conf .bash_custom .gitignore")
 for f in $tolink; do
-    ln -sf "$PWD/$f" "$HOME/$f"
-    echo "Linked $f to $HOME/$f"
+    ln -svf "$PWD/$f" "$HOME/$f"
 done
 
+echo "Copying files..."
 tocopy=(".gitconfig")
 for f in $tocopy; do
-    # only copy if doesn'y already exist
-    cp --no-clobber "$PWD/$f" "$HOME/$f"
-    echo "Copied $f to $HOME/$f"
+    # only copy if doesn't already exist
+    if [[ ! -f "$HOME/$f" ]]; then
+        cp -v "$PWD/$f" "$HOME/$f"
+    fi
 done
 
 if [[ -z "$(grep "~/.bash_custom" ~/.bashrc)" ]]; then

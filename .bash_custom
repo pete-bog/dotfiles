@@ -1,4 +1,4 @@
-# set edittor to vi or vim
+# set editor to vi or vim
 VIM_INSTALL="$(which vim)"
 if [[ -z "$VIM_INSTALL" ]]; then
     VIM_INSTALL="$(which vi)"
