@@ -39,7 +39,7 @@ Plug 'tpope/vim-surround'
 call plug#end()
 
 " GENERAL
-set term=xterm
+"set term=xterm-256color
 let mapleader=","
 imap jj <Esc>
 set mouse=a
@@ -72,15 +72,34 @@ hi MatchParen cterm=none ctermbg=66 ctermfg=251
 set wildmenu
 set wildmode=longest:full,full
 
-"COLORS
-set termguicolors
-syntax enable
-set background=dark
+" ----- COLORS -----
+syntax on
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX))
+  if (has("nvim"))
+  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+
+" tmux 256 colors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-" Set colortheme, but don't warn on start up if can't find it
+
+" set theme
+set background=dark
+" don't complain if it doesn't exist, we just haven't installed it yet
 silent! colorscheme one
 silent! let g:airline_theme="one"
+" ----- END COLORS -----
 
 " CLIPBOARD - this doesn't require +clipboard and uses xclip instead
 " copy highlighted selection only does complete lines
