@@ -24,7 +24,9 @@ export CLICOLOR=1
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+if [[ ! -z "$(which pyenv)" ]]; then
+    eval "$(pyenv init -)"
+fi
 
 # pipenv
 export PIPENV_VENV_IN_PROJECT=1
