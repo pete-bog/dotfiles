@@ -60,7 +60,7 @@ set softtabstop=4		"set the number of cols for a tab
 set shiftwidth=4		"indents will have width of 4
 set autoindent
 
-set cursorline
+"set cursorline
 set number
 set ruler
 
