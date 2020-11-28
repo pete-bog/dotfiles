@@ -6,7 +6,7 @@
 function git_prompt_info() {
     local ref
     ref=$(git symbolic-ref HEAD 2> /dev/null) || ref=$(git rev-parse --short HEAD 2> /dev/null) || return 0
-    echo "$GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$GIT_PROMPT_SUFFIX"
+    echo "$GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$(git_remote_status)$GIT_PROMPT_SUFFIX"
 }
 
 # Checks if working tree is dirty
@@ -29,31 +29,35 @@ function parse_git_dirty() {
 
 # Gets the difference between the local and remote branches
 function git_remote_status() {
-    local remote ahead behind git_remote_status git_remote_status_detailed git_remote_origin
-    git_remote_origin=$(git rev-parse --verify ${hook_com[branch]}@{upstream} --symbolic-full-name 2>/dev/null)
-    remote=${git_remote_origin/refs\/remotes\//}
-    if [[ -n ${remote} ]]; then
-        ahead=$(git rev-list ${hook_com[branch]}@{upstream}..HEAD 2>/dev/null | wc -l)
-        behind=$(git rev-list HEAD..${hook_com[branch]}@{upstream} 2>/dev/null | wc -l)
-
-        if [[ $ahead -eq 0 ]] && [[ $behind -eq 0 ]]; then
-            git_remote_status="$GIT_PROMPT_EQUAL_REMOTE"
-        elif [[ $ahead -gt 0 ]] && [[ $behind -eq 0 ]]; then
-            git_remote_status="$GIT_PROMPT_AHEAD_REMOTE"
-            git_remote_status_detailed="$GIT_PROMPT_AHEAD_REMOTE_COLOR$GIT_PROMPT_AHEAD_REMOTE$((ahead))%{$reset_color%}"
-        elif [[ $behind -gt 0 ]] && [[ $ahead -eq 0 ]]; then
-            git_remote_status="$GIT_PROMPT_BEHIND_REMOTE"
-            git_remote_status_detailed="$GIT_PROMPT_BEHIND_REMOTE_COLOR$GIT_PROMPT_BEHIND_REMOTE$((behind))%{$reset_color%}"
-        elif [[ $ahead -gt 0 ]] && [[ $behind -gt 0 ]]; then
-            git_remote_status="$GIT_PROMPT_DIVERGED_REMOTE"
-            git_remote_status_detailed="$GIT_PROMPT_AHEAD_REMOTE_COLOR$GIT_PROMPT_AHEAD_REMOTE$((ahead))%{$reset_color%}$GIT_PROMPT_BEHIND_REMOTE_COLOR$GIT_PROMPT_BEHIND_REMOTE$((behind))%{$reset_color%}"
+    local ahead behind git_remote_status local_branch upstream_branch
+    # Check we are on a branch, if not then take no further action
+    if [[ -z "$(git_current_branch)" ]]; then
+        return
+    fi
+    local_branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
+    if [[ -n "$local_branch" ]] && [[ "$local_branch" != "HEAD" ]]; then
+        local upstream_branch=$(git rev-parse --abbrev-ref "@{upstream}" 2> /dev/null)
+        # If we get back what we put in, then that means the upstream branch was not found.  (This was observed on git 1.7.10.4 on Ubuntu)
+        [[ "$upstream_branch" = "@{upstream}" ]] && upstream_branch=''
+        # If the branch is not tracking a specific remote branch, then assume we are tracking origin/[this_branch_name]
+        [[ -z "$upstream_branch" ]] && upstream_branch="origin/$local_branch"
+        if [[ -n "$upstream_branch" ]]; then
+            ahead=$(git rev-list --left-right ${local_branch}...${upstream_branch} 2> /dev/null | grep -c '^<')
+            behind=$(git rev-list --left-right ${local_branch}...${upstream_branch} 2> /dev/null | grep -c '^>')
+            
+            if [[ $ahead -eq 0 ]] && [[ $behind -eq 0 ]]; then
+                git_remote_status="$GIT_PROMPT_EQUAL_REMOTE"
+            else
+                # one of ahead or beind is >0
+                if [[ $ahead -gt 0 ]]; then
+                    git_remote_status="${GIT_PROMPT_AHEAD_REMOTE}${ahead}"
+                fi
+                if [[ $behind -gt 0 ]]; then
+                    git_remote_status="${git_remote_status}${GIT_PROMPT_BEHIND_REMOTE}${behind}"
+                fi
+            fi
+            echo "$git_remote_status"
         fi
-
-        if [[ -n $GIT_PROMPT_REMOTE_STATUS_DETAILED ]]; then
-            git_remote_status="$GIT_PROMPT_REMOTE_STATUS_PREFIX$remote$git_remote_status_detailed$GIT_PROMPT_REMOTE_STATUS_SUFFIX"
-        fi
-
-        echo $git_remote_status
     fi
 }
 
