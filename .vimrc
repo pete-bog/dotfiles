@@ -60,6 +60,7 @@ set softtabstop=4		"set the number of cols for a tab
 set shiftwidth=4		"indents will have width of 4
 set autoindent
 
+
 "set cursorline
 set number
 set ruler
@@ -119,6 +120,11 @@ autocmd BufWritePre *.py,*.yml,*.json :call <SID>StripTrailingWhitespaces()
 command BreakLine :s/, /,\r/g
 
 " SHORTCUTS
+" Ctrl + arrow keys will skip words (windows alacritty)
+map <ESC>[1;5D <C-Left>
+map <ESC>[1;5C <C-Right>
+map! <ESC>[1;5D <C-Left>
+map! <ESC>[1;5C <C-Right>
 " smart home (home moves to first character in the line, or to position 0 if
 " already there
 noremap <expr> <Home> (col('.') == matchend(getline('.'), '^\s*')+1 ? '0' : '^')
