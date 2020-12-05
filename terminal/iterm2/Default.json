@@ -394,7 +394,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0.71372549019607845
   },
-  "Normal Font" : "MesloLGSForPowerline-Regular 15",
+  "Normal Font" : "SourceCodePro-Regular 15",
   "Ansi 2 Color" : {
     "Red Component" : 0.59607843137254901,
     "Color Space" : "sRGB",
