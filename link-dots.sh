@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-if [[ "$SHELL" == "/bin/bash" ]]; then
+if [[ "$SHELL" == "/bin/bash" || "$SHELL" == "/usr/bin/bash" ]]; then
     echo "Setting up bash"
     ln -svf "$PWD/bash/.bashrc" "$HOME/.bashrc"
 elif [[ "$SHELL" == "/bin/zsh" ]]; then
