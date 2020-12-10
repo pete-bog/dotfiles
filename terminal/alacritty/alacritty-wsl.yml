@@ -3,6 +3,11 @@ window:
         columns: 90
         lines: 28
 
+shell:
+    program: "wsl.exe"
+
+working_directory: "\\\\wsl$\\Ubuntu\\home\\user"
+
 selection:
     save_to_clipboard: true
 
