@@ -1,7 +1,7 @@
-GIT_PROMPT_PREFIX="${fg_magenta}❬"
-GIT_PROMPT_SUFFIX="${fg_magenta}❭"
-GIT_PROMPT_DIRTY=" ${fg_red}✗"
-GIT_PROMPT_CLEAN=" ${fg_magenta}✓"
+GIT_PROMPT_PREFIX="${fg_magenta}"
+GIT_PROMPT_SUFFIX=""
+GIT_PROMPT_DIRTY="${fg_yellow}*"
+GIT_PROMPT_CLEAN="" 
 GIT_PROMPT_AHEAD_REMOTE=" ${fg_yellow}↑"
 GIT_PROMPT_BEHIND_REMOTE=" ${fg_cyan}↓"
 
