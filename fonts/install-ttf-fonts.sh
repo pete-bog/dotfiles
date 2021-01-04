@@ -1,6 +1,6 @@
 #!/bin/bash
 
-declare -a fonts=("CascadiaCode.ttf" "SourceCodePro*.ttf" "Meslo LG S*.ttf")
+declare -a fonts=("CascadiaCode.ttf" "SourceCodePro*.ttf" "Meslo LG S*.ttf" "IBMPlexMono-*.ttf")
 
 if test "$(uname)" = "Darwin" ; then
     # MacOS
