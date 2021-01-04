@@ -15,6 +15,9 @@ alias less="less -R"
 # tmux
 alias t="tmux"
 
+# grep, excluding dotfiles
+alias grp="grep --exclude-dir '**/.*' --exclude-dir '.*'"
+
 # if nvim is installed, then prefer it over vim
 if [[ ! -z "$(which nvim)" ]]; then
     alias vim="nvim"
