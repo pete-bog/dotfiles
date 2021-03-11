@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+
+# Slightly modified version of oh-my-bash's git plugin from:
+# https://github.com/ohmybash/oh-my-bash/blob/master/plugins/git/git.plugin.sh
+
 #
 # Functions
 #

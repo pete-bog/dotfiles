@@ -13,6 +13,7 @@ function debug_msg() {
 #### Environment variables ####
 # Path modifications
 export PATH="$HOME/development/environment/scripts/bin:$PATH"
+export PATH="$HOME/development/environment/local-scripts/bin:$PATH"
 export PATH="$HOME/development/environment/tools/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
