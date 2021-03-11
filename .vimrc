@@ -115,7 +115,7 @@ function! <SID>StripTrailingWhitespaces()
 endfun
 command StripTrailing :call <SID>StripTrailingWhitespaces()
 " auto strip py files on save
-autocmd BufWritePre *.py,*.yml,*.json :call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 " break a line and auto indent
 command BreakLine :s/, /,\r/g
 
