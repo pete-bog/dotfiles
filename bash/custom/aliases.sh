@@ -22,3 +22,4 @@ alias grp="grep --exclude-dir '**/__pycache__' --exclude-dir '**/.*' --exclude-d
 if [[ ! -z "$(which nvim)" ]]; then
     alias vim="nvim"
 fi
+

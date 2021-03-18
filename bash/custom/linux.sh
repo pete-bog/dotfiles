@@ -14,7 +14,9 @@ if [[ "$PLATFORM" == "Linux" ]]; then
         alias pkgr="sudo apt remove"
         alias pkgsearch="apt search"
         alias pkgs="apt search"
-        alias pkgupdate="sudo apt update && sudo apt upgrade -y"
-        alias pkgu="sudo apt update && sudo apt upgrade -y"
+        alias pkgupdate="sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y"
+        alias pkgu="sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y"
+        # Emulate macos 'open' behaviour
+        alias open="xdg-open"
     fi
 fi
