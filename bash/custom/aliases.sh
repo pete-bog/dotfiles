@@ -23,3 +23,9 @@ if [[ ! -z "$(which nvim)" ]]; then
     alias vim="nvim"
 fi
 
+# Docker aliases
+if [[ ! -z "$(which docker)" ]]; then
+    alias di="docker image"
+    alias dc="docker container"
+    alias dps="docker ps -a"
+fi
