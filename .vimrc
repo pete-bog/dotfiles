@@ -65,8 +65,8 @@ set autoindent
 set number
 set ruler
 
-" line at 80 chars
-set colorcolumn=80
+" column at 81 chars
+set colorcolumn=81
 "Set highlight colors
 hi MatchParen cterm=none ctermbg=66 ctermfg=251
 "menu
