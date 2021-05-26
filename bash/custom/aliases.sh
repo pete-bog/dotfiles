@@ -6,9 +6,6 @@ alias ll="ls -l"
 alias l="ls -lA"
 alias lla="ls -lA"
 
-# Git
-alias gac="git add --all && git status && git commit -m"
-
 # less
 alias less="less -R"
 
