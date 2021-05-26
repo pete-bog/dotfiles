@@ -2,8 +2,7 @@
 alias gs="git status"
 alias ga="git add"
 alias gaa="git add --all && git status"
-alias gc="git commit -m"
-alias gac="git add --all && git status && git commit -m"
+alias gcmsg="git commit -m"
 # other
 alias grep="grep --color=auto"
 alias less="less -R"
