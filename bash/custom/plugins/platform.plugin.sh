@@ -8,7 +8,7 @@ if [[ -n "$(echo $PLATFORM | grep 'MINGW64_NT' || true )" ]]; then
 fi
 
 # If we're in WSL, then record this in a variable.
-if [[ -n "$(uname -v | grep 'Microsoft' || true )" ]]; then 
+if [[ -z "$WSLENV" ]]; then
     export WSL="true"
 fi
 

@@ -1,3 +1,5 @@
 if [[ "$WSL" == "true" ]]; then
-    export APPDATA="/mnt/c/Users/Peter/AppData/Roaming"
+    if [[ -z "$APPDATA" ]]; then
+        echo "APPDATA is not set! Set 'WSLENV=APPDATA/up:LOCALAPPDATA/up' in windows environment vars."
+    fi
 fi
