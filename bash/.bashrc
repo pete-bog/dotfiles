@@ -3,7 +3,7 @@ BASH_CUSTOM_DIR="$HOME/development/environment/dotfiles/bash/custom"
 BASH_PLUGIN_DIR="$BASH_CUSTOM_DIR/plugins"
 BASH_THEME_DIR="$BASH_CUSTOM_DIR/themes"
 DEBUG=0
-    
+
 function debug_msg() {
     if [[ $DEBUG -gt 0 ]]; then
         printf "$1\n"
@@ -26,7 +26,7 @@ export CLICOLOR=1
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 if [[ ! -z "$(which pyenv)" ]]; then
-    eval "$(pyenv init -)"
+    eval "$(pyenv init --path)"
 fi
 
 # pipenv
