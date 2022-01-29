@@ -5,3 +5,5 @@
 venv/
 **/.DS_Store
 *.egg-info
+coverage.xml
+.coverage
