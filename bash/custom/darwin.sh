@@ -9,4 +9,6 @@ if [[ "$PLATFORM" == "Darwin" ]]; then
 
     alias vmlist="find $HOME/Virtual\ Machines.localized -name *.vmx -type f -exec realpath {} \;"
     alias vmrun="/Applications/VMware\ Fusion.app/Contents/Library/vmrun"
+
+    alias firefox="/Applications/Firefox.app/Contents/MacOS/firefox"
 fi
