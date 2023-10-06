@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #### Define location of config files ####
 BASH_CUSTOM_DIR="$HOME/development/environment/dotfiles/bash/custom"
 BASH_PLUGIN_DIR="$BASH_CUSTOM_DIR/plugins"
