@@ -1,0 +1,3 @@
+[MASTER]
+extension-pkg-whitelist=pydantic
+disable=invalid-name,too-few-public-methods,too-many-public-methods,missing-function-docstring,missing-module-docstring,missing-class-docstring
