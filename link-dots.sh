@@ -1,9 +1,14 @@
 #!/bin/bash
 set -e
 
+
+echo "Linking dotfiles..."
+find ~+ -maxdepth 2 -name '.*' -type f -not -name '.gitconfig' -not -name "*.swp" -exec bash -c 'ln -svf {} $HOME/$(basename {})' \;
+
 if [[ "$SHELL" == "/bin/bash" || "$SHELL" == "/usr/bin/bash" ]]; then
     echo "Setting up bash"
-    ln -svf "$PWD/bash/.bashrc" "$HOME/.bashrc"
+    # Above step will have already linked the bashrc
+    #ln -svf "$PWD/bash/.bashrc" "$HOME/.bashrc"
 elif [[ "$SHELL" == "/bin/zsh" ]]; then
     echo "Setting up zsh"
     cd zsh
@@ -12,12 +17,6 @@ elif [[ "$SHELL" == "/bin/zsh" ]]; then
 else
     echo "No setup-steps for $SHELL."
 fi
-
-echo "Linking files..."
-tolink=(".vimrc .tmux.conf .gitignore")
-for f in $tolink; do
-    ln -svf "$PWD/$f" "$HOME/$f"
-done
 
 echo "Copying files..."
 tocopy=(".gitconfig")
