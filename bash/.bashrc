@@ -62,3 +62,7 @@ for f in $BASH_CUSTOM_DIR/*.sh; do
     source $f
 done
 
+### Load in local bash config
+if [[ -f $HOME/.bash_private ]]; then
+    source $HOME/.bash_private
+fi
