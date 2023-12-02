@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #### Define location of config files ####
 BASH_CUSTOM_DIR="$HOME/development/environment/dotfiles/bash/custom"
 BASH_PLUGIN_DIR="$BASH_CUSTOM_DIR/plugins"
@@ -12,8 +14,7 @@ function debug_msg() {
 
 #### Environment variables ####
 # Path modifications
-export PATH="$HOME/development/environment/scripts/bin:$PATH"
-export PATH="$HOME/development/environment/local-scripts/bin:$PATH"
+export PATH="$HOME/development/environment/*scripts/bin:$PATH"
 export PATH="$HOME/development/environment/tools/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.local/go/bin:$PATH"
@@ -27,7 +28,7 @@ export CLICOLOR=1
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 if [[ ! -z "$(which pyenv)" ]]; then
-    eval "$(pyenv init -)"
+    eval "$(pyenv init --path)"
 fi
 
 # pipenv
@@ -62,3 +63,7 @@ for f in $BASH_CUSTOM_DIR/*.sh; do
     source $f
 done
 
+### Load in local bash config
+if [[ -f $HOME/.bash_private ]]; then
+    source $HOME/.bash_private
+fi
