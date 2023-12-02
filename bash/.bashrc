@@ -3,7 +3,7 @@ BASH_CUSTOM_DIR="$HOME/development/environment/dotfiles/bash/custom"
 BASH_PLUGIN_DIR="$BASH_CUSTOM_DIR/plugins"
 BASH_THEME_DIR="$BASH_CUSTOM_DIR/themes"
 DEBUG=0
-    
+
 function debug_msg() {
     if [[ $DEBUG -gt 0 ]]; then
         printf "$1\n"
@@ -16,6 +16,7 @@ export PATH="$HOME/development/environment/scripts/bin:$PATH"
 export PATH="$HOME/development/environment/local-scripts/bin:$PATH"
 export PATH="$HOME/development/environment/tools/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/go/bin:$PATH"
 
 # vim is default editor
 export EDITOR="vim"
