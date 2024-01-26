@@ -1,5 +1,6 @@
 [user]
 	name = Peter W
+	email = 156520281+pete-bog@users.noreply.github.com
 [core]
 	editor = vim
 	excludesFile = ~/.gitignore
