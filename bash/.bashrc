@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #### Define location of config files ####
-BASH_CUSTOM_DIR="$HOME/dotfiles/bash/custom"
+BASH_CUSTOM_DIR="$(dirname $(realpath $HOME/.bashrc))/custom"
 BASH_PLUGIN_DIR="$BASH_CUSTOM_DIR/plugins"
 BASH_THEME_DIR="$BASH_CUSTOM_DIR/themes"
 DEBUG=0
