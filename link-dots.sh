@@ -3,7 +3,7 @@ set -e
 
 
 echo "Linking dotfiles..."
-find ~+ -maxdepth 2 -name '.*' -type f -not -name '.gitconfig' -not -name "*.swp" -exec bash -c 'ln -svf {} $HOME/$(basename {})' \;
+find ~+ -maxdepth 2 -name '.*' -type f -not -name "*.swp" -exec bash -c 'ln -svf {} $HOME/$(basename {})' \;
 
 if [[ "$SHELL" == "/bin/bash" || "$SHELL" == "/usr/bin/bash" ]]; then
     echo "Setting up bash"
@@ -17,14 +17,5 @@ elif [[ "$SHELL" == "/bin/zsh" ]]; then
 else
     echo "No setup-steps for $SHELL."
 fi
-
-echo "Copying files..."
-tocopy=(".gitconfig")
-for f in $tocopy; do
-    # only copy if doesn't already exist
-    if [[ ! -f "$HOME/$f" ]]; then
-        cp -v "$PWD/$f" "$HOME/$f"
-    fi
-done
 
 echo "Done"
