@@ -14,8 +14,8 @@ function debug_msg() {
 
 #### Environment variables ####
 # Path modifications
-export PATH="$HOME/development/environment/*scripts/bin:$PATH"
-export PATH="$HOME/development/environment/tools/bin:$PATH"
+export PATH="$HOME/development/*scripts/bin:$PATH"
+export PATH="$HOME/development/tools/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.local/go/bin:$PATH"
 
