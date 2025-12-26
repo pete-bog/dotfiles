@@ -19,7 +19,10 @@ for d in $HOME/development/*scripts/bin; do
 done
 export PATH="$HOME/development/tools/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+
+# go
 export PATH="$HOME/.local/go/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
 
 # vim is default editor
 export EDITOR="vim"
