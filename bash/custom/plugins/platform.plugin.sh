@@ -10,6 +10,9 @@ fi
 # If we're in WSL, then record this in a variable.
 if [[ -n "$WSLENV" ]]; then
     export WSL="true"
+    # X forwarding
+    export DISPLAY=$(ip route list default | awk '{print $3}'):0
+    export LIBGL_ALWAYS_INDIRECT=1
 fi
 
 # Find the linux distribution name, and save to variable.
