@@ -14,7 +14,9 @@ function debug_msg() {
 
 #### Environment variables ####
 # Path modifications
-export PATH="$HOME/development/*scripts/bin:$PATH"
+for d in $HOME/development/*scripts/bin; do
+    export PATH="$d:$PATH"
+done
 export PATH="$HOME/development/tools/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.local/go/bin:$PATH"
@@ -37,9 +39,6 @@ export PIPENV_VENV_IN_PROJECT=1
 export POETRY_VIRTUALENVS_IN_PROJECT=true
 
 BASH_THEME="mytheme"
-
-
-
 
 #### Load plugins #####
 for plugin in $BASH_PLUGIN_DIR/*.plugin.sh; do
@@ -67,3 +66,7 @@ done
 if [[ -f $HOME/.bash_private ]]; then
     source $HOME/.bash_private
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
