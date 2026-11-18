@@ -1,90 +1,114 @@
-# If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+#### Define location of config files ####
+_zshrc="$HOME/.zshrc"
+ZSH_CUSTOM_DIR="${_zshrc:A:h}/custom"
+ZSH_PLUGIN_DIR="$ZSH_CUSTOM_DIR/plugins"
+ZSH_THEME_DIR="$ZSH_CUSTOM_DIR/themes"
+ZSH_THEME="mytheme"
+ZSH_ARGZERO="${ZSH_ARGZERO:-$0}"  # expected by the vendored oh-my-zsh plugins
+DEBUG=0
+
+debug_msg() {
+    if [[ $DEBUG -gt 0 ]]; then
+        printf "$1\n"
+    fi
+}
+
+#### Environment variables ####
+# Path modifications
+for d in $HOME/development/*scripts/bin(N); do
+    export PATH="$d:$PATH"
+done
+export PATH="$HOME/bin:/usr/local/bin:$PATH"
 export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin/:$PATH"
+export PATH="$HOME/development/tools/bin:$PATH"
 export PATH="$HOME/development/environment/tools/bin:$PATH"
 export PATH="$HOME/development/environment/scripts/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
+# go
+export PATH="$HOME/.local/go/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
+
+# vim is default editor
+export EDITOR="vim"
+# color by default
 export CLICOLOR=1
-
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="mytheme"
-
-# Uncomment the following line to use case-sensitive completion.
-CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-    git
-    osx
-    virtualenv
-)
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-# You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-export EDITOR="vim"
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv >/dev/null; then
+    eval "$(pyenv init -)"
+fi
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# pipenv
+export PIPENV_VENV_IN_PROJECT=1
+# poetry
+export POETRY_VIRTUALENVS_IN_PROJECT=true
+
+# disables prompt mangling in virtual_env/bin/activate
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+#### Shell options ####
+# History
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=50000
+SAVEHIST=50000
+setopt append_history share_history hist_ignore_dups hist_ignore_space
+
+# Bash-like editing and word boundaries
+bindkey -e
+WORDCHARS=''
+bindkey '^[[H' beginning-of-line   # home
+bindkey '^[[F' end-of-line         # end
+bindkey '^[[3~' delete-char        # delete
+
+# Comments allowed in interactive shell, prompts expand variables
+setopt interactive_comments prompt_subst
+
+# Prompt functions from the git-lib plugin run synchronously
+zstyle ':omz:alpha:lib:git' async-prompt no
+
+#### Load plugins ####
+# Hand-picked, mostly vendored from oh-my-zsh (see custom/plugins/README.md).
+# Order matters: git-lib provides the functions the git plugin and theme use.
+plugins=(colors git-lib git virtualenv windowtitle)
+if [[ "$(uname -s)" == "Darwin" ]]; then
+    plugins+=(macos)
+fi
+
+for plugin in $plugins; do
+    debug_msg "Loading plugin: $plugin"
+    fpath=($ZSH_PLUGIN_DIR/$plugin $fpath)
+    source $ZSH_PLUGIN_DIR/$plugin/$plugin.plugin.zsh
+done
+
+#### Completion ####
+# After plugins, so their completions are on fpath
+autoload -Uz compinit && compinit -d "$HOME/.zcompdump"
+zstyle ':completion:*' menu select
+
+#### Load theme ####
+if [[ -f $ZSH_THEME_DIR/$ZSH_THEME.zsh-theme ]]; then
+    debug_msg "Loading theme: $ZSH_THEME.zsh-theme"
+    source $ZSH_THEME_DIR/$ZSH_THEME.zsh-theme
+else
+    debug_msg "Using default theme"
+    PROMPT=$'%n@%m %~\n» '
+fi
+
+#### Load user-defined scripts ####
+for f in $ZSH_CUSTOM_DIR/*.zsh; do
+    debug_msg "Loading custom script: $f"
+    source $f
+done
+
+#### Local config ####
+if [[ -f $HOME/.zsh_private ]]; then
+    source $HOME/.zsh_private
+fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -11,9 +11,7 @@ if [[ "$SHELL" == "/bin/bash" || "$SHELL" == "/usr/bin/bash" ]]; then
     #ln -svf "$PWD/bash/.bashrc" "$HOME/.bashrc"
 elif [[ "$SHELL" == "/bin/zsh" ]]; then
     echo "Setting up zsh"
-    cd zsh
-    bash setup-oh-my-zsh.sh
-    cd ..
+    # Above step will have already linked the zshrc
 else
     echo "No setup-steps for $SHELL."
 fi
