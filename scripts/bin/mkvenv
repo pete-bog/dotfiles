@@ -1,0 +1,54 @@
+#!/bin/bash
+set -e
+
+PACKAGES=("pylint" "rope" "flake8" "isort" "yapf" "tox" "black" "pytest")
+version="$1"
+currentVersion="$(python --version | sed 's/Python //g')"
+if [[ -z "$version" ]]; then
+    echo "Available versions: "
+    pyenv versions
+    read -p "Please enter version, or press enter to use $currentVersion: " version
+    if [[ -z "$version" ]]; then
+        version="$currentVersion"
+    fi
+fi
+
+if [[ "$version" != "$currentVersion" ]]; then
+    # activate the selected pyenv version, if it differs from our current env
+    eval "$(pyenv init -)"
+    pyenv shell $version
+    echo "Selected Python $version"
+fi
+
+if [[ -d ".venv" ]]; then
+    echo ""
+    read -p "There is already a virtual environment in $PWD/.venv, replace it? (Y/n): " replace
+    if [[ "$replace" == "n" ]]; then
+        echo "Exiting."
+        exit 1
+    fi
+    echo "Removing existing virtual environment ($PWD/.venv)..."
+    rm -rf .venv
+fi
+
+# Check if uv is already installed, and install it if not
+set +e
+if ! command -v uv &> /dev/null
+then
+    echo "Installing uv..."
+    python3 -m pip install --upgrade pip uv
+fi
+set -e
+
+echo "Creating new Python $version virtual environment..."
+uv venv
+echo "Created new virtual environment at $(realpath .venv)"
+source .venv/bin/activate
+
+echo "Upgrading pip..."
+uv pip install --upgrade pip
+
+echo "Installing core development packages..."
+uv pip install "${PACKAGES[@]}"
+
+echo "Done."

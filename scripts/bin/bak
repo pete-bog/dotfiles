@@ -1,0 +1,7 @@
+#!/bin/bash
+if [ -z $1 ]; then
+    echo "Usage: bak /path/to/file_to_back_up"
+    exit 1
+fi
+
+cp -v $1 $1.bak

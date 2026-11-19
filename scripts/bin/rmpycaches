@@ -1,0 +1,4 @@
+torm=$(find . -type d -name '__pycache__')
+rm -rf $torm
+echo "Removed $(echo $torm | wc -w) __pycache__ directories"
+

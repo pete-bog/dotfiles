@@ -1,0 +1,7 @@
+#!/bin/bash
+if [ -z $1 ]; then
+    echo "Usage: zip <directory to zip>"
+    exit 1
+fi
+
+zip -r "${1%'/'}.zip" $1
